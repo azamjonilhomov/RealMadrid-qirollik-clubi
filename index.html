@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Madrid CF | Hala Madrid y Nada Más</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Cinzel for Royal Headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rmGold: '#FEBE10',
+                        rmGoldDark: '#D99B00',
+                        rmNavy: '#001E44',
+                        rmNavyLight: '#0A2E5C',
+                        rmPurple: '#522D80',
+                        rmSilver: '#F4F6F9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        royal: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar & Subtle Royal Effects */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #001E44;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FEBE10;
+            border-radius: 9999px;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FEBE10 0%, #FFF3B0 50%, #D99B00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-pattern {
+            background-color: #001E44;
+            background-image: radial-gradient(circle at 20% 30%, rgba(254, 190, 16, 0.15) 0%, transparent 45%),
+                              radial-gradient(circle at 80% 70%, rgba(82, 45, 128, 0.25) 0%, transparent 50%);
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .jersey-card:hover .jersey-number {
+            transform: scale(1.1) translateY(-4px);
+            color: #FEBE10;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-[#050D1A] dark:text-slate-100 transition-colors duration-300 font-sans selection:bg-rmGold selection:text-rmNavy">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-[#001E44]/95 glass-card border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-rmNavy to-rmNavyLight dark:from-rmGold dark:to-amber-300 flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid fa-crown text-rmGold dark:text-rmNavy text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-royal font-extrabold text-xl tracking-wider text-rmNavy dark:text-white block leading-none">REAL MADRID</span>
+                        <span class="text-[11px] font-semibold tracking-widest uppercase text-rmGoldDark dark:text-rmGold">1902 • Qirollik Klubi</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-6 text-sm font-semibold">
+                    <a href="#tarix" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Tarix</a>
+                    <a href="#sovrinlar" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Sovrinlar</a>
+                    <a href="#tarkib" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Joriy Tarkib</a>
+                    <a href="#afsonalar" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Afsonalar</a>
+                    <a href="#stadion" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Bernabéu</a>
+                    <a href="#interaktiv" class="hover:text-rmGoldDark dark:hover:text-rmGold transition-colors">Viktorina & Ovoz</a>
+                </nav>
+
+                <!-- Theme Toggle & Mobile Menu Button -->
+                <div class="flex items-center space-x-3">
+                    <button id="themeToggle" aria-label="Mavzuni o'zgartirish" class="p-2.5 rounded-xl bg-slate-100 dark:bg-white/10 text-rmNavy dark:text-rmGold hover:bg-rmGold hover:text-rmNavy transition-all shadow-sm">
+                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobileMenuBtn" aria-label="Menyuni ochish" class="lg:hidden p-2.5 rounded-xl bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy">
+                        <i class="fa-solid fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white dark:bg-[#001E44] border-b border-slate-200 dark:border-white/10 px-4 pt-2 pb-6 space-y-2 shadow-xl">
+            <a href="#tarix" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">📜 Klub Tarixi</a>
+            <a href="#sovrinlar" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">🏆 Sovrinlar Muzeyi</a>
+            <a href="#tarkib" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">⚽ Joriy Tarkib</a>
+            <a href="#afsonalar" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">⭐ Klub Afsonalari</a>
+            <a href="#stadion" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">🏟️ Santiago Bernabéu</a>
+            <a href="#interaktiv" class="mobile-link block px-4 py-3 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-white/10">🎯 Viktorina va So'rovnoma</a>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 hero-pattern text-white overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-24 right-10 opacity-10 pointer-events-none hidden md:block">
+            <i class="fa-solid fa-crown text-[260px] text-rmGold animate-float"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 border border-rmGold/40 text-rmGold text-xs sm:text-sm font-bold tracking-wider uppercase">
+                        <i class="fa-solid fa-star"></i>
+                        <span>FIFA XX Asrning Eng Yaxshi Klubi</span>
+                    </div>
+                    
+                    <h1 class="font-royal text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight">
+                        HALA MADRID <br>
+                        <span class="gold-gradient-text">Y NADA MÁS!</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        1902-yilda tashkil etilgan afsonaviy Qirollik klubi. G'alabalar, shon-sharaf, tuganmas iroda va futbol tarixidagi eng buyuk rekordlar maskani.
+                    </p>
+
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#tarkib" class="px-7 py-4 rounded-2xl bg-rmGold text-rmNavy font-extrabold text-sm sm:text-base shadow-lg shadow-rmGold/25 hover:bg-amber-300 hover:-translate-y-0.5 transition-all flex items-center space-x-2">
+                            <span>Yulduzlar Tarkibi</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#interaktiv" class="px-7 py-4 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm sm:text-base transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-trophy text-rmGold"></i>
+                            <span>Muxlislar Viktorinasi</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Animated Trophy Counter Showcase -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white/5 border border-white/15 rounded-3xl p-6 sm:p-8 glass-card shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+                            <div>
+                                <h2 class="font-royal text-lg font-bold text-rmGold">SHON-SHARAF ZALI</h2>
+                                <p class="text-xs text-slate-300">Asosiy rasmiy sovrinlar statistikasi</p>
+                            </div>
+                            <i class="fa-solid fa-trophy text-3xl text-rmGold"></i>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-rmNavyLight/70 border border-rmGold/30 rounded-2xl p-5 text-center hover:border-rmGold transition-colors">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-rmGold counter" data-target="15">0</div>
+                                <div class="text-xs sm:text-sm font-bold text-white mt-1">UEFA Chempionlar Ligasi</div>
+                                <div class="text-[11px] text-slate-400 mt-0.5">Mutlaq rekord</div>
+                            </div>
+
+                            <div class="bg-rmNavyLight/70 border border-white/10 rounded-2xl p-5 text-center hover:border-rmGold transition-colors">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white counter" data-target="36">0</div>
+                                <div class="text-xs sm:text-sm font-bold text-rmGold mt-1">La Liga Chempionligi</div>
+                                <div class="text-[11px] text-slate-400 mt-0.5">Ispaniya qirollari</div>
+                            </div>
+
+                            <div class="bg-rmNavyLight/70 border border-white/10 rounded-2xl p-5 text-center hover:border-rmGold transition-colors">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-white counter" data-target="20">0</div>
+                                <div class="text-xs sm:text-sm font-bold text-rmGold mt-1">Copa del Rey</div>
+                                <div class="text-[11px] text-slate-400 mt-0.5">Ispaniya Kubogi</div>
+                            </div>
+
+                            <div class="bg-rmNavyLight/70 border border-white/10 rounded-2xl p-5 text-center hover:border-rmGold transition-colors">
+                                <div class="text-3xl sm:text-4xl font-extrabold text-rmGold counter" data-target="5">0</div>
+                                <div class="text-xs sm:text-sm font-bold text-white mt-1">FIFA Klublar JCH</div>
+                                <div class="text-[11px] text-slate-400 mt-0.5">+3 Qit'alararo kubok</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-300">
+                            <span>Prezident: <strong class="text-white">Florentino Pérez</strong></span>
+                            <span>Stadion: <strong class="text-rmGold">Santiago Bernabéu</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. CLUB HISTORY & LEGACY (TARIX VA MEROS) -->
+    <section id="tarix" class="py-20 bg-white dark:bg-[#081224] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-rmGoldDark dark:text-rmGold font-bold tracking-widest uppercase text-xs">120+ Yillik Buyuk Yo'l</span>
+                <h2 class="font-royal text-3xl sm:text-4xl font-extrabold text-rmNavy dark:text-white mt-2">KLUB TARIXI VA MEROSI</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Madridning kichik futbol klubidan jahon futbolining eng qudratli imperiyasigacha bo'lgan tarixiy bosqichlarni tanlang.
+                </p>
+            </div>
+
+            <!-- Interactive Era Selector Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="eraTabs">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Era Display Card -->
+            <div id="eraDisplay" class="bg-slate-50 dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-10 shadow-xl transition-all">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TROPHY CABINET (SOVRINLAR MUZEYI) -->
+    <section id="sovrinlar" class="py-20 bg-slate-100 dark:bg-[#050D1A] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-rmGoldDark dark:text-rmGold font-bold tracking-widest uppercase text-xs">Shonli Yutuqlar</span>
+                    <h2 class="font-royal text-3xl sm:text-4xl font-extrabold text-rmNavy dark:text-white mt-2">SOVRINLAR MUZEYI</h2>
+                </div>
+                <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md">
+                    Har bir kubok ortida millionlab muxlislarning quvonchi va tarixiy finallar yotadi. Batafsil yillarni ko'rish uchun kartochkalarga bosing.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="trophiesGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CURRENT SQUAD & STARS (JORIY TARKIB VA YULDUZLAR) -->
+    <section id="tarkib" class="py-20 bg-white dark:bg-[#081224] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-rmGoldDark dark:text-rmGold font-bold tracking-widest uppercase text-xs">Galaktikos Yangi Avlodi</span>
+                <h2 class="font-royal text-3xl sm:text-4xl font-extrabold text-rmNavy dark:text-white mt-2">JORIY TARKIB VA YULDUZLAR</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Amplua bo'yicha saralang va istalgan futbolchi haqida to'liq ma'lumot olish uchun kartochka ustiga bosing.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10" id="squadFilters">
+                <button data-filter="all" class="filter-btn active px-5 py-2.5 rounded-xl font-bold text-sm bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy shadow-md transition-all">Barchasi (13)</button>
+                <button data-filter="Darvozabon" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 hover:bg-rmGold hover:text-rmNavy transition-all">Darvozabonlar</button>
+                <button data-filter="Himoyachi" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 hover:bg-rmGold hover:text-rmNavy transition-all">Himoyachilar</button>
+                <button data-filter="Yarim himoyachi" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 hover:bg-rmGold hover:text-rmNavy transition-all">Yarim himoyachilar</button>
+                <button data-filter="Hujumchi" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 hover:bg-rmGold hover:text-rmNavy transition-all">Hujumchilar</button>
+            </div>
+
+            <!-- Players Grid -->
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="playersGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CLUB LEGENDS (AFSONALAR) -->
+    <section id="afsonalar" class="py-20 bg-rmNavy text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-rmGold font-bold tracking-widest uppercase text-xs">Abadiy Qahramonlar</span>
+                <h2 class="font-royal text-3xl sm:text-4xl font-extrabold text-white mt-2">KLUB AFSONALARI</h2>
+                <p class="text-slate-300 mt-3 text-sm sm:text-base">
+                    Oq libos sharafini munosib himoya qilib, o'z nomlarini futbol tarixiga oltin harflar bilan yozdirgan buyuk shaxslar.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" id="legendsGrid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SANTIAGO BERNABÉU STADIUM -->
+    <section id="stadion" class="py-20 bg-slate-50 dark:bg-[#050D1A] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden shadow-2xl">
+                <div class="grid lg:grid-cols-12">
+                    <!-- Left Visual / Interactive Specs -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-rmNavy via-rmNavyLight to-rmPurple p-8 sm:p-10 text-white flex flex-col justify-between">
+                        <div>
+                            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rmGold/20 text-rmGold text-xs font-bold mb-4">
+                                <i class="fa-solid fa-building"></i>
+                                <span>XXI Asrning Eng Zamonaviy Arenasi</span>
+                            </div>
+                            <h2 class="font-royal text-3xl sm:text-4xl font-extrabold leading-tight">SANTIAGO BERNABÉU</h2>
+                            <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+                                1947-yilda ochilgan va yaqinda 1 milliard yevrodan ortiq mablag' evaziga to'liq rekonstruksiya qilingan futuristik stadion.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 my-8">
+                            <div class="bg-white/10 rounded-2xl p-4">
+                                <div class="text-2xl font-extrabold text-rmGold">85,000</div>
+                                <div class="text-xs text-slate-300">Tomoshabin sig'imi</div>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-4">
+                                <div class="text-2xl font-extrabold text-rmGold">360°</div>
+                                <div class="text-xs text-slate-300">LED Video Tablo</div>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-4">
+                                <div class="text-2xl font-extrabold text-rmGold">15 daq</div>
+                                <div class="text-xs text-slate-300">Tom yopilish vaqti</div>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-4">
+                                <div class="text-2xl font-extrabold text-rmGold">30 m</div>
+                                <div class="text-xs text-slate-300">Yer osti chim saqlagichi</div>
+                            </div>
+                        </div>
+
+                        <div class="text-xs text-slate-300 flex items-center space-x-2">
+                            <i class="fa-solid fa-location-dot text-rmGold"></i>
+                            <span>Av. de Concha Espina, 1, Chamartín, Madrid, Ispaniya</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Interactive Stadium Explorer -->
+                    <div class="lg:col-span-7 p-8 sm:p-10">
+                        <h3 class="font-royal text-xl sm:text-2xl font-bold text-rmNavy dark:text-white mb-2">Stadion Texnologiyalarini Kashf Eting</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Quyidagi innovatsion bo'limlardan birini tanlab batafsil ma'lumot oling:</p>
+
+                        <div class="grid sm:grid-cols-2 gap-4 mb-6" id="stadiumFeatures">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <div id="stadiumFeatureDetail" class="p-6 rounded-2xl bg-slate-100 dark:bg-white/5 border border-rmGold/40">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. INTERACTIVE FAN QUIZ & FAVORITE PLAYER POLL -->
+    <section id="interaktiv" class="py-20 bg-white dark:bg-[#081224] transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-rmGoldDark dark:text-rmGold font-bold tracking-widest uppercase text-xs">Madridista Maydoni</span>
+                <h2 class="font-royal text-3xl sm:text-4xl font-extrabold text-rmNavy dark:text-white mt-2">MUXLISLAR VIKTORINASI VA OVOZ BERISH</h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm sm:text-base">
+                    Haqiqiy Madridista ekanligingizni bilimingiz bilan isbotlang va mavsumning eng yaxshi futbolchisiga ovoz bering!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Interactive Trivia Quiz -->
+                <div class="lg:col-span-7 bg-slate-50 dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-rmGold text-rmNavy flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-rmNavy dark:text-white">Real Madrid Bilimdonlari Viktorinasi</h3>
+                                <p class="text-xs text-slate-500 dark:text-slate-400">7 ta qiziqarli savol</p>
+                            </div>
+                        </div>
+                        <span id="quizProgressBadge" class="px-3 py-1 rounded-full bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy text-xs font-bold">1 / 7</span>
+                    </div>
+
+                    <div id="quizContainer">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Live Fan Poll -->
+                <div class="lg:col-span-5 bg-slate-50 dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-xl">
+                    <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-white/10 pb-4 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-rmNavy text-rmGold flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-rmNavy dark:text-white">Sevimli futbolchingizga ovoz bering</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Jami ovozlar: <span id="totalVotesCount" class="font-bold text-rmGoldDark dark:text-rmGold">1,420</span></p>
+                        </div>
+                    </div>
+
+                    <div id="pollOptions" class="space-y-4">
+                        <!-- Populated by JS -->
+                    </div>
+
+                    <p id="pollStatusMsg" class="text-xs text-center text-slate-500 dark:text-slate-400 mt-5">
+                        Ovoz berish uchun sevimli o'yinchingiz ustiga bosing!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#00132C] text-slate-300 pt-16 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-rmGold flex items-center justify-center">
+                            <i class="fa-solid fa-crown text-rmNavy"></i>
+                        </div>
+                        <span class="font-royal font-extrabold text-xl text-white">REAL MADRID CF</span>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        O'zbekistonlik Madridistalar uchun maxsus tayyorlangan interaktiv ensiklopediya va muxlislar portali. ¡Hala Madrid y Nada Más!
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-sm mb-4">Tezkor Havolalar</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#tarix" class="hover:text-rmGold transition-colors">Klub Tarixi (1902–Hozir)</a></li>
+                        <li><a href="#sovrinlar" class="hover:text-rmGold transition-colors">15x Chempionlar Ligasi</a></li>
+                        <li><a href="#tarkib" class="hover:text-rmGold transition-colors">Asosiy Tarkib Yulduzlari</a></li>
+                        <li><a href="#stadion" class="hover:text-rmGold transition-colors">Yangi Santiago Bernabéu</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white uppercase tracking-wider text-sm mb-4">Klub Madhiyasi</h4>
+                    <blockquote class="italic text-sm text-rmGold/90 bg-white/5 p-4 rounded-2xl border border-white/10">
+                        "Historia que tú hiciste, historia por hacer, porque nadie resiste tus ganas de vencer..."
+                        <span class="block text-xs text-slate-400 not-italic mt-2">— Hala Madrid y Nada Más</span>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+                <p>© 2026 Real Madrid Muxlislar Portali (O'zbek tilida). Barcha huquqlar himoyalangan.</p>
+                <div class="flex items-center space-x-4 text-base">
+                    <span class="text-rmGold font-bold">15 🏆 UCL</span>
+                    <span>•</span>
+                    <span class="text-white font-bold">36 🏆 La Liga</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PLAYER MODAL POPUP -->
+    <div id="playerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+        <div class="bg-white dark:bg-[#0D1B33] border border-slate-200 dark:border-rmGold/40 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all">
+            <div class="bg-gradient-to-r from-rmNavy to-rmNavyLight p-6 text-white relative">
+                <button id="closeModalBtn" aria-label="Yopish" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/15 hover:bg-rmGold hover:text-rmNavy flex items-center justify-center transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="flex items-center space-x-4">
+                    <div id="modalNumber" class="w-16 h-16 rounded-2xl bg-rmGold text-rmNavy font-royal font-extrabold text-3xl flex items-center justify-center shadow-lg">
+                        9
+                    </div>
+                    <div>
+                        <span id="modalPosition" class="text-xs font-bold uppercase tracking-wider text-rmGold">Hujumchi</span>
+                        <h3 id="modalName" class="text-2xl font-extrabold">Kylian Mbappé</h3>
+                        <p id="modalCountry" class="text-xs text-slate-300 mt-0.5">🇫🇷 Fransiya • 27 yosh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6 space-y-4">
+                <p id="modalBio" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+                
+                <div class="grid grid-cols-3 gap-3 pt-2">
+                    <div class="bg-slate-100 dark:bg-white/5 p-3 rounded-2xl text-center">
+                        <div id="modalStat1Val" class="text-lg font-extrabold text-rmNavy dark:text-rmGold">98</div>
+                        <div id="modalStat1Label" class="text-[11px] text-slate-500 dark:text-slate-400">Tezlik</div>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-white/5 p-3 rounded-2xl text-center">
+                        <div id="modalStat2Val" class="text-lg font-extrabold text-rmNavy dark:text-rmGold">95</div>
+                        <div id="modalStat2Label" class="text-[11px] text-slate-500 dark:text-slate-400">Zarba</div>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-white/5 p-3 rounded-2xl text-center">
+                        <div id="modalStat3Val" class="text-lg font-extrabold text-rmNavy dark:text-rmGold">2024</div>
+                        <div id="modalStat3Label" class="text-[11px] text-slate-500 dark:text-slate-400">Kelgan yili</div>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button id="closeModalFooterBtn" class="w-full py-3 rounded-xl bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy font-bold text-sm hover:opacity-90 transition-opacity">
+                        Yopish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. DATA DEFINITIONS (UZBEK) ---
+        const historyEras = [
+            {
+                id: '1902',
+                year: '1902–1943',
+                title: 'Tashkil Topish va Qirollik Unvoni',
+                badge: 'Boshlanish',
+                summary: '1902-yil 6-martda aka-uka Xuan va Karlos Padros tomonidan "Madrid Football Club" nomi bilan tashkil etilgan. 1920-yilda Ispaniya qiroli Alfonso XIII klubga "Real" (Qirollik) unvonini va gerbga toj qo‘shish huquqini berdi.',
+                highlights: [
+                    '1902-yil 6-mart — Klubning rasmiy tug‘ilgan kuni.',
+                    '1905-yil — Birinchi rasmiy sovrin (Ispaniya Kubogi) qo‘lga kiritildi.',
+                    '1920-yil — Qirol Alfonso XIII tomonidan "Real Madrid" nomi berildi.',
+                    '1929-yil — La Liganing ilk mavsumi ishtirokchisi.'
+                ]
+            },
+            {
+                id: '1950s',
+                year: '1943–1966',
+                title: 'Santiago Bernabéu va Yevropa Hukmronligi',
+                badge: 'Oltin Davr',
+                summary: 'Afsonaviy prezident Santiago Bernabéu klubni jahon grandiga aylantirdi. Alfredo Di Stéfano, Ferenc Puskás va Francisco Gento boshchiligidagi jamoa 1956–1960-yillarda ketma-ket 5 marta Yevropa Chempionlar Kubogini yutdi.',
+                highlights: [
+                    '1947-yil — Yangi ulkan stadion (keyinchalik Santiago Bernabéu) ochildi.',
+                    '1956–1960 — Ketma-ket 5 ta Yevropa Chempionlar Kubogi (mutlaq rekord).',
+                    '1960-yil — Frankfurtda "Ayntraxt" ustidan 7:3 hisobidagi afsonaviy g‘alaba.',
+                    '1966-yil — "Ye-yé" avlodi bilan 6-Yevropa kubogi qo‘lga kiritildi.'
+                ]
+            },
+            {
+                id: 'galacticos',
+                year: '2000–2006',
+                title: 'Galácticos Davri',
+                badge: 'Jahon Yulduzlari',
+                summary: 'Florentino Pérez prezidentlikka kelgach, har yili dunyoning eng yorqin yulduzlarini xarid qilish siyosatini boshladi: Luís Figo, Zinedine Zidane, Ronaldo Nazário, David Beckham va Roberto Carlos bir jamoada jamlandi.',
+                highlights: [
+                    '2000-yil — FIFA Real Madridni "XX Asrning Eng Yaxshi Klubi" deb e’lon qildi.',
+                    '2002-yil — Zinedine Zidanening Glazgodagi afsonaviy goli bilan 9-Chempionlar Ligasi.',
+                    '2001 & 2003 — La Liga chempionliklari va yorqin hujumkor futbol.'
+                ]
+            },
+            {
+                id: 'ladecima',
+                year: '2014–2018',
+                title: 'La Décima va Tarixiy "Three-Peat"',
+                badge: 'Zamonaviy Imperiya',
+                summary: '2014-yilda Sergio Ramosning 92:48 daqiqadagi goli bilan 12 yillik tanaffusdan so‘ng 10-kubok (La Décima) qo‘lga kiritildi. Keyin esa Zinedine Zidane murabbiyligida Cristiano Ronaldo, Modrić va Kroos triosi ketma-ket 3 marta (2016, 2017, 2018) Chempionlar Ligasini yutdi!',
+                highlights: [
+                    '2014-yil — Lissabonda "Atletiko" ustidan 4:1 hisobidagi g‘alaba (La Décima).',
+                    '2016–2018 — Zamonaviy Chempionlar Ligasida ketma-ket 3 ta kubok yutgan yagona klub.',
+                    'Cristiano Ronaldo 450 ta gol bilan klub tarixidagi eng yaxshi to‘purarga aylandi.'
+                ]
+            },
+            {
+                id: 'modern',
+                year: '2022–Hozir',
+                title: '14 va 15-Kuboklar, Yangi Galaktikos',
+                badge: 'Yangi Era',
+                summary: 'Carlo Ancelotti boshchiligida jamoa 2022-yilda aqlbovar qilmas "kamback"lar bilan 14-kubokni, 2024-yilda esa Wembley stadionida 15-Chempionlar Ligasini qo‘lga kiritdi. Bugun Vinícius Jr, Bellingham va Mbappé yangi tarix yozmoqda.',
+                highlights: [
+                    '2022-yil — PSJ, Chelsi, Man Siti va Liverpulni mag‘lub etib 14-kubok.',
+                    '2024-yil — Dortmundning "Borussiya"sini 2:0 hisobida yengib 15-Chempionlar Ligasi.',
+                    'Yangi Santiago Bernabéu stadioni to‘liq ishga tushirildi.'
+                ]
+            }
+        ];
+
+        const trophiesData = [
+            {
+                name: 'UEFA Chempionlar Ligasi',
+                count: 15,
+                icon: 'fa-trophy',
+                color: 'text-rmGold',
+                desc: 'Yevropaning eng nufuzli klublar turnirida mutlaq rekordchi.',
+                years: '1956, 1957, 1958, 1959, 1960, 1966, 1998, 2000, 2002, 2014, 2016, 2017, 2018, 2022, 2024'
+            },
+            {
+                name: 'Ispaniya La Ligasi',
+                count: 36,
+                icon: 'fa-shield-halved',
+                color: 'text-amber-500',
+                desc: 'Ispaniya milliy chempionatida eng ko‘p g‘olib chiqqan klub.',
+                years: '1932, 1933, 1954, 1955, 1957, 1958, 1961–1965, 1967–1969, 1972, 1975, 1976, 1978–1980, 1986–1990, 1995, 1997, 2001, 2003, 2007, 2008, 2012, 2017, 2020, 2022, 2024'
+            },
+            {
+                name: 'Copa del Rey (Ispaniya Kubogi)',
+                count: 20,
+                icon: 'fa-award',
+                color: 'text-sky-500',
+                desc: 'Ispaniya Qirollik kubogi finallaridagi unutilmas g‘alabalar.',
+                years: '1905, 1906, 1907, 1908, 1917, 1934, 1936, 1946, 1947, 1962, 1970, 1974, 1975, 1980, 1982, 1989, 1993, 2011, 2014, 2023'
+            },
+            {
+                name: 'FIFA Klublar Jahon Chempionati',
+                count: 5,
+                icon: 'fa-earth-americas',
+                color: 'text-emerald-500',
+                desc: 'Sayyoramizning eng kuchli klubi maqomini tasdiqlovchi sovrinlar (+3 Qit’alararo kubok).',
+                years: '2014, 2016, 2017, 2018, 2022'
+            },
+            {
+                name: 'UEFA Superkubogi',
+                count: 6,
+                icon: 'fa-star',
+                color: 'text-purple-500',
+                desc: 'Chempionlar Ligasi va Yevropa Ligasi g‘oliblari to‘qnashuvidagi rekord natija.',
+                years: '2002, 2014, 2016, 2017, 2022, 2024'
+            },
+            {
+                name: 'Ispaniya Superkubogi',
+                count: 13,
+                icon: 'fa-crown',
+                color: 'text-rose-500',
+                desc: 'Mavsum ochilishidagi shiddatli bahslarda qo‘lga kiritilgan kuboklar.',
+                years: '1988, 1989, 1990, 1993, 1997, 2001, 2003, 2008, 2012, 2017, 2020, 2022, 2024'
+            }
+        ];
+
+        const playersData = [
+            {
+                number: 1,
+                name: 'Thibaut Courtois',
+                position: 'Darvozabon',
+                country: '🇧🇪 Belgiya',
+                age: 33,
+                joined: 2018,
+                stat1: ['94', 'Refleks'],
+                stat2: ['92', 'Pozitsiya'],
+                bio: 'Dunyoning eng kuchli darvozabonlaridan biri. 2022-yilgi Chempionlar Ligasi finalida 9 ta seyv amalga oshirib, "Finalning eng yaxshi o‘yinchisi" bo‘lgan.'
+            },
+            {
+                number: 3,
+                name: 'Éder Militão',
+                position: 'Himoyachi',
+                country: '🇧🇷 Braziliya',
+                age: 28,
+                joined: 2019,
+                stat1: ['90', 'Tezlik'],
+                stat2: ['91', 'Bosh o‘yin'],
+                bio: 'Yuqori tezlikka va kuchli jismoniy tayyorgarlikka ega markaziy himoyachi. Ikkinchi qavatdagi kurashlarda tengsiz.'
+            },
+            {
+                number: 22,
+                name: 'Antonio Rüdiger',
+                position: 'Himoyachi',
+                country: '🇩🇪 Germaniya',
+                age: 33,
+                joined: 2022,
+                stat1: ['93', 'Kuch'],
+                stat2: ['94', 'Yetakchilik'],
+                bio: 'Himoya qo‘rg‘onining haqiqiy jangchisi. Erling Haaland kabi top hujumchilarni zararsizlantirgan o‘yinlari bilan muxlislar mehrini qozongan.'
+            },
+            {
+                number: 5,
+                name: 'Jude Bellingham',
+                position: 'Yarim himoyachi',
+                country: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 Angliya',
+                age: 22,
+                joined: 2023,
+                stat1: ['94', 'Texnika'],
+                stat2: ['93', 'Gol sezish'],
+                bio: 'Zinedine Zidanening afsonaviy 5-raqamini munosib davom ettirayotgan yosh superyulduz. Debyut mavsumidayoq El Clásico qahramoniga aylangan.'
+            },
+            {
+                number: 8,
+                name: 'Federico Valverde',
+                position: 'Yarim himoyachi',
+                country: '🇺🇾 Urugvay',
+                age: 27,
+                joined: 2018,
+                stat1: ['96', 'Chidamlilik'],
+                stat2: ['95', 'Uzoq zarba'],
+                bio: '"El Halcón" (Lochin) laqabli universallik timsoli. Maydonning har bir qarichi uchun kurashadi va dahshatli uzoq masofali zarbalarga ega.'
+            },
+            {
+                number: 10,
+                name: 'Luka Modrić',
+                position: 'Yarim himoyachi',
+                country: '🇭🇷 Xorvatiya',
+                age: 40,
+                joined: 2012,
+                stat1: ['98', 'Pas mahorati'],
+                stat2: ['99', 'Tajriba'],
+                bio: '2018-yilgi "Oltin to‘p" sohibi va klub tarixidagi eng sovrindor futbolchi. Uning tashqi oyoq (trivela) uzatmalari futbol san’ati darajasida.'
+            },
+            {
+                number: 6,
+                name: 'Eduardo Camavinga',
+                position: 'Yarim himoyachi',
+                country: '🇫🇷 Fransiya',
+                age: 23,
+                joined: 2021,
+                stat1: ['91', 'Dribling'],
+                stat2: ['90', 'To‘p olib qo‘yish'],
+                bio: 'Yosh bo‘lishiga qaramay barcha klub sovrinlarini yutgan iste’dod. Markazda ham, chap qanot himoyasida ham ajoyib o‘ynaydi.'
+            },
+            {
+                number: 14,
+                name: 'Aurélien Tchouaméni',
+                position: 'Yarim himoyachi',
+                country: '🇫🇷 Fransiya',
+                age: 26,
+                joined: 2022,
+                stat1: ['90', 'Tayanch'],
+                stat2: ['89', 'Zarba'],
+                bio: 'Maydon markazidagi muvozanatni ushlab turuvchi kuchli tayanch yarim himoyachi.'
+            },
+            {
+                number: 15,
+                name: 'Arda Güler',
+                position: 'Yarim himoyachi',
+                country: '🇹🇷 Turkiya',
+                age: 21,
+                joined: 2023,
+                stat1: ['92', 'Chap oyoq'],
+                stat2: ['91', 'Kreativlik'],
+                bio: 'Turkiya futbolining oltin iste’dodi. O‘zining nozik texnikasi va aniq zarbalari bilan kelajak yulduzi sifatida e’tirof etiladi.'
+            },
+            {
+                number: 7,
+                name: 'Vinícius Júnior',
+                position: 'Hujumchi',
+                country: '🇧🇷 Braziliya',
+                age: 25,
+                joined: 2018,
+                stat1: ['97', 'Dribling'],
+                stat2: ['96', 'Tezlik'],
+                bio: 'Afsonaviy 7-raqam egasi. 2022 va 2024-yilgi Chempionlar Ligasi finallarida gol urib, dunyoning eng xavfli vingeriga aylandi.'
+            },
+            {
+                number: 9,
+                name: 'Kylian Mbappé',
+                position: 'Hujumchi',
+                country: '🇫🇷 Fransiya',
+                age: 27,
+                joined: 2024,
+                stat1: ['98', 'Tezlik'],
+                stat2: ['96', 'Yakunlash'],
+                bio: 'Bolalikdagi orzusini amalga oshirib Madridga kelgan jahon chempioni. Uning tezligi va gol urish mahorati hujum chizig‘ini to‘xtatib bo‘lmas darajaga olib chiqdi.'
+            },
+            {
+                number: 11,
+                name: 'Rodrygo Goes',
+                position: 'Hujumchi',
+                country: '🇧🇷 Braziliya',
+                age: 25,
+                joined: 2019,
+                stat1: ['93', 'Texnika'],
+                stat2: ['94', 'Katta o‘yinlar'],
+                bio: 'Chempionlar Ligasining hal qiluvchi daqiqalarida mo‘jizalar yaratuvchi braziliyalik hujumchi. 2022-yilda "Man Siti"ga urgan 2 goli abadiy esda qolgan.'
+            },
+            {
+                number: 16,
+                name: 'Endrick',
+                position: 'Hujumchi',
+                country: '🇧🇷 Braziliya',
+                age: 19,
+                joined: 2024,
+                stat1: ['91', 'Kuchli zarba'],
+                stat2: ['90', 'Potensial'],
+                bio: 'Braziliyaning yangi vunderkindi. Kuchli chap oyoq zarbasi va yuqori portlovchi tezlikka ega yosh hujumchi.'
+            }
+        ];
+
+        const legendsData = [
+            {
+                name: 'Cristiano Ronaldo',
+                years: '2009–2018',
+                stats: '438 o‘yin • 450 gol',
+                role: 'Klub tarixidagi eng yaxshi to‘purar, 4x UCL, 4x Oltin to‘p (Madrid safida).'
+            },
+            {
+                name: 'Alfredo Di Stéfano',
+                years: '1953–1964',
+                stats: '396 o‘yin • 308 gol',
+                role: 'Real Madridni jahon grandiga aylantirgan "Oq o‘q", 5x Yevropa kubogi g‘olibi.'
+            },
+            {
+                name: 'Zinedine Zidane',
+                years: '2001–2006 / 2016–2021',
+                stats: 'Futbolchi & Murabbiy',
+                role: 'Afsonaviy yarim himoyachi va murabbiy sifatida ketma-ket 3 marta UCL yutgan daho.'
+            },
+            {
+                name: 'Sergio Ramos',
+                years: '2005–2021',
+                stats: '671 o‘yin • 101 gol',
+                role: '92:48 afsonasi, jamoa ruhi va eng sermahsul himoyachi sardor.'
+            },
+            {
+                name: 'Iker Casillas',
+                years: '1999–2015',
+                stats: '725 o‘yin • "San Iker"',
+                role: 'Klub tarbiyalanuvchisi va XXI asrning eng buyuk darvozabonlaridan biri.'
+            },
+            {
+                name: 'Raúl González',
+                years: '1994–2010',
+                stats: '741 o‘yin • 323 gol',
+                role: 'Madridismo timsoli, klub tarixida eng ko‘p o‘yin o‘tkazgan afsonaviy 7-raqam.'
+            },
+            {
+                name: 'Karim Benzema',
+                years: '2009–2023',
+                stats: '648 o‘yin • 354 gol',
+                role: '2022-yilgi Oltin to‘p sohibi, klub tarixidagi ikkinchi eng yaxshi to‘purar.'
+            },
+            {
+                name: 'Toni Kroos',
+                years: '2014–2024',
+                stats: '465 o‘yin • 94% aniq pas',
+                role: 'Maydon markazining "nemis snayperi", 5 marta Real bilan UCL g‘olibi.'
+            }
+        ];
+
+        const stadiumTechData = [
+            {
+                id: 'pitch',
+                title: 'Yer osti yig‘iluvchi chim',
+                icon: 'fa-layer-group',
+                desc: '6 ta ulkan gidravlik platforma yordamida tabiiy maysa 30 metr chuqurlikdagi yer osti issiqxonasiga tushiriladi. Bu yerda chim avtomatik sug‘oriladi, UV nurlar bilan parvarishlanadi va stadionda konsert yoki NBA o‘yinlari o‘tkazish imkonini beradi.'
+            },
+            {
+                id: 'roof',
+                title: '15 daqiqada yopiluvchi tom',
+                icon: 'fa-umbrella',
+                desc: 'Yuqori texnologiyali harakatlanuvchi tom yomg‘ir yoki qor yog‘ganda atigi 15 daqiqa ichida stadionni to‘liq yopadi va akustikani kuchaytirib, muxlislar hayqirig‘ini yanada balandroq qiladi.'
+            },
+            {
+                id: 'halo',
+                title: '360° Halo Video Ekran',
+                icon: 'fa-tv',
+                desc: 'Stadion tomi ostida aylana shakldagi ulkan 360 darajali LED ekran o‘rnatilgan bo‘lib, har bir tribunadan takroriy lavhalar va statistikani yuqori aniqlikda ko‘rish mumkin.'
+            },
+            {
+                id: 'facade',
+                title: 'Futuristik po‘lat fasad',
+                icon: 'fa-wand-magic-sparkles',
+                desc: 'Stadion tashqi ko‘rinishi zanglamaydigan po‘lat lentalar bilan qoplangan bo‘lib, kechasi unga klub tarixidagi eng yorqin gollar va lazer shoulari proyeksiyalanadi.'
+            }
+        ];
+
+        const quizQuestions = [
+            {
+                question: 'Real Madrid klubi qaysi yili tashkil etilgan?',
+                options: ['1899-yil', '1902-yil', '1905-yil', '1910-yil'],
+                correct: 1,
+                explanation: 'Real Madrid 1902-yil 6-martda tashkil etilgan.'
+            },
+            {
+                question: 'Real Madrid UEFA Chempionlar Ligasida necha marta g‘olib bo‘lgan?',
+                options: ['12 marta', '13 marta', '14 marta', '15 marta'],
+                correct: 3,
+                explanation: '2024-yilda Wembleydagi g‘alabadan so‘ng kuboklar soni 15 taga yetdi!'
+            },
+            {
+                question: '2014-yilgi Chempionlar Ligasi finalida Sergio Ramos nechanchi daqiqada hisobni tenglashtirgan?',
+                options: ['89:15', '90:00', '92:48', '94:10'],
+                correct: 2,
+                explanation: '92:48 — Madridistalar uchun eng muqaddas raqamlardan biri!'
+            },
+            {
+                question: 'Real Madrid tarixidagi eng yaxshi to‘purar kim?',
+                options: ['Raúl González', 'Alfredo Di Stéfano', 'Karim Benzema', 'Cristiano Ronaldo'],
+                correct: 3,
+                explanation: 'Cristiano Ronaldo 438 o‘yinda 450 ta gol urib mutlaq rekord o‘rnatgan.'
+            },
+            {
+                question: 'Klubga "Real" (Qirollik) unvonini qaysi qirol bergan?',
+                options: ['Alfonso XIII', 'Juan Carlos I', 'Felipe VI', 'Carlos III'],
+                correct: 0,
+                explanation: '1920-yilda qirol Alfonso XIII klubga "Real" unvonini topshirgan.'
+            },
+            {
+                question: 'Zinedine Zidane murabbiy sifatida ketma-ket necha marta Chempionlar Ligasini yutgan?',
+                options: ['2 marta', '3 marta', '4 marta', '1 marta'],
+                correct: 1,
+                explanation: '2016, 2017 va 2018-yillarda ketma-ket 3 marta kubok qo‘lga kiritilgan.'
+            },
+            {
+                question: 'Real Madridning rasmiy madhiyasi qanday nomlanadi?',
+                options: ['You’ll Never Walk Alone', 'Hala Madrid y Nada Más', 'Cant del Barça', 'La Decima Song'],
+                correct: 1,
+                explanation: '2014-yilda RedOne tomonidan bastalangan "Hala Madrid y Nada Más" klub madhiyasidir.'
+            }
+        ];
+
+        let pollCandidates = [
+            { id: 'vini', name: 'Vinícius Júnior (#7)', votes: 465 },
+            { id: 'mbappe', name: 'Kylian Mbappé (#9)', votes: 440 },
+            { id: 'bellingham', name: 'Jude Bellingham (#5)', votes: 325 },
+            { id: 'valverde', name: 'Federico Valverde (#8)', votes: 190 }
+        ];
+
+        // --- 2. THEME TOGGLE & MOBILE MENU ---
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlEl = document.documentElement;
+
+        // Check system preference or saved theme
+        if (localStorage.getItem('rm-theme') === 'dark' || (!localStorage.getItem('rm-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlEl.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem('rm-theme', isDark ? 'dark' : 'light');
+            themeIcon.classList.toggle('fa-moon', !isDark);
+            themeIcon.classList.toggle('fa-sun', isDark);
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // --- 3. HERO ANIMATED COUNTERS ---
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1600;
+                const stepTime = Math.max(Math.floor(duration / target), 30);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += 1;
+                    counter.textContent = current;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            });
+        }
+
+        // --- 4. RENDER HISTORY TIMELINE ---
+        const eraTabs = document.getElementById('eraTabs');
+        const eraDisplay = document.getElementById('eraDisplay');
+
+        function renderEra(index) {
+            const era = historyEras[index];
+            // Update tab styles
+            Array.from(eraTabs.children).forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.className = 'px-5 py-2.5 rounded-xl font-bold text-sm bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy shadow-lg transition-all';
+                } else {
+                    btn.className = 'px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 hover:bg-rmGold/30 transition-all';
+                }
+            });
+
+            eraDisplay.innerHTML = `
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-rmGold/20 text-rmGoldDark dark:text-rmGold text-xs font-extrabold uppercase">
+                            <span>${era.year}</span>
+                            <span>•</span>
+                            <span>${era.badge}</span>
+                        </div>
+                        <h3 class="font-royal text-2xl sm:text-3xl font-extrabold text-rmNavy dark:text-white">${era.title}</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">${era.summary}</p>
+                    </div>
+                    <div class="lg:col-span-5 bg-white dark:bg-white/5 rounded-2xl p-6 border border-slate-200 dark:border-white/10">
+                        <h4 class="font-bold text-sm uppercase tracking-wider text-rmGoldDark dark:text-rmGold mb-4">Muhim Voqealar:</h4>
+                        <ul class="space-y-3">
+                            ${era.highlights.map(item => `
+                                <li class="flex items-start space-x-3 text-sm text-slate-700 dark:text-slate-200">
+                                    <i class="fa-solid fa-circle-check text-rmGold mt-1"></i>
+                                    <span>${item}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        historyEras.forEach((era, idx) => {
+            const btn = document.createElement('button');
+            btn.textContent = era.year;
+            btn.addEventListener('click', () => renderEra(idx));
+            eraTabs.appendChild(btn);
+        });
+        renderEra(0);
+
+        // --- 5. RENDER TROPHIES CABINET ---
+        const trophiesGrid = document.getElementById('trophiesGrid');
+        trophiesData.forEach(trophy => {
+            const card = document.createElement('div');
+            card.className = 'bg-white dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group';
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-4">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-white/10 flex items-center justify-center text-2xl ${trophy.color} group-hover:scale-110 transition-transform">
+                        <i class="fa-solid ${trophy.icon}"></i>
+                    </div>
+                    <span class="font-royal text-4xl font-extrabold text-rmNavy dark:text-rmGold">${trophy.count}</span>
+                </div>
+                <h3 class="font-bold text-lg text-rmNavy dark:text-white mb-2">${trophy.name}</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">${trophy.desc}</p>
+                <div class="pt-3 border-t border-slate-100 dark:border-white/10">
+                    <span class="text-[11px] font-bold uppercase text-rmGoldDark dark:text-rmGold block mb-1">Qo'lga kiritilgan yillar:</span>
+                    <p class="text-xs text-slate-500 dark:text-slate-300 font-medium">${trophy.years}</p>
+                </div>
+            `;
+            trophiesGrid.appendChild(card);
+        });
+
+        // --- 6. RENDER SQUAD & MODAL ---
+        const playersGrid = document.getElementById('playersGrid');
+        const playerModal = document.getElementById('playerModal');
+
+        function openPlayerModal(player) {
+            document.getElementById('modalNumber').textContent = player.number;
+            document.getElementById('modalPosition').textContent = player.position;
+            document.getElementById('modalName').textContent = player.name;
+            document.getElementById('modalCountry').textContent = `${player.country} • ${player.age} yosh`;
+            document.getElementById('modalBio').textContent = player.bio;
+            document.getElementById('modalStat1Val').textContent = player.stat1[0];
+            document.getElementById('modalStat1Label').textContent = player.stat1[1];
+            document.getElementById('modalStat2Val').textContent = player.stat2[0];
+            document.getElementById('modalStat2Label').textContent = player.stat2[1];
+            document.getElementById('modalStat3Val').textContent = player.joined;
+            
+            playerModal.classList.remove('hidden');
+            playerModal.classList.add('flex');
+        }
+
+        function closePlayerModal() {
+            playerModal.classList.add('hidden');
+            playerModal.classList.remove('flex');
+        }
+
+        document.getElementById('closeModalBtn').addEventListener('click', closePlayerModal);
+        document.getElementById('closeModalFooterBtn').addEventListener('click', closePlayerModal);
+        playerModal.addEventListener('click', (e) => {
+            if (e.target === playerModal) closePlayerModal();
+        });
+
+        function renderPlayers(filter = 'all') {
+            playersGrid.innerHTML = '';
+            const filtered = filter === 'all' ? playersData : playersData.filter(p => p.position === filter);
+
+            filtered.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'jersey-card bg-slate-50 dark:bg-[#0D1B33] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-md hover:shadow-xl hover:border-rmGold transition-all cursor-pointer flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-start justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-rmNavy/10 dark:bg-white/10 text-rmNavy dark:text-rmGold text-xs font-bold">
+                                ${player.position}
+                            </span>
+                            <span class="jersey-number font-royal text-3xl font-extrabold text-slate-300 dark:text-white/20 transition-all">
+                                #${player.number}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-lg text-rmNavy dark:text-white">${player.name}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${player.country} • ${player.age} yosh</p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-bold">
+                        <span class="text-rmGoldDark dark:text-rmGold">${player.stat1[1]}: ${player.stat1[0]}</span>
+                        <span class="text-rmNavy dark:text-white flex items-center gap-1">
+                            Batafsil <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                        </span>
+                    </div>
+                `;
+                card.addEventListener('click', () => openPlayerModal(player));
+                playersGrid.appendChild(card);
+            });
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.className = 'filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-100 dark:bg-white/10 hover:bg-rmGold hover:text-rmNavy transition-all';
+                });
+                btn.className = 'filter-btn active px-5 py-2.5 rounded-xl font-bold text-sm bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy shadow-md transition-all';
+                renderPlayers(btn.getAttribute('data-filter'));
+            });
+        });
+        renderPlayers();
+
+        // --- 7. RENDER LEGENDS ---
+        const legendsGrid = document.getElementById('legendsGrid');
+        legendsData.forEach(legend => {
+            const card = document.createElement('div');
+            card.className = 'bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-rmGold transition-all';
+            card.innerHTML = `
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-rmGold">${legend.years}</span>
+                    <i class="fa-solid fa-medal text-rmGold"></i>
+                </div>
+                <h3 class="font-royal text-xl font-bold text-white mb-1">${legend.name}</h3>
+                <div class="text-xs font-semibold text-amber-300 mb-3">${legend.stats}</div>
+                <p class="text-xs text-slate-300 leading-relaxed">${legend.role}</p>
+            `;
+            legendsGrid.appendChild(card);
+        });
+
+        // --- 8. RENDER STADIUM INTERACTIVE TECH ---
+        const stadiumFeatures = document.getElementById('stadiumFeatures');
+        const stadiumFeatureDetail = document.getElementById('stadiumFeatureDetail');
+
+        function selectStadiumTech(index) {
+            const tech = stadiumTechData[index];
+            Array.from(stadiumFeatures.children).forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.className = 'p-4 rounded-2xl border-2 border-rmGold bg-rmNavy text-white text-left transition-all shadow-md';
+                } else {
+                    btn.className = 'p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-left hover:border-rmGold transition-all';
+                }
+            });
+
+            stadiumFeatureDetail.innerHTML = `
+                <div class="flex items-center space-x-3 mb-2">
+                    <i class="fa-solid ${tech.icon} text-rmGoldDark dark:text-rmGold text-xl"></i>
+                    <h4 class="font-bold text-base text-rmNavy dark:text-white">${tech.title}</h4>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${tech.desc}</p>
+            `;
+        }
+
+        stadiumTechData.forEach((item, idx) => {
+            const btn = document.createElement('button');
+            btn.innerHTML = `
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid ${item.icon} text-rmGold text-lg"></i>
+                    <span class="font-bold text-sm">${item.title}</span>
+                </div>
+            `;
+            btn.addEventListener('click', () => selectStadiumTech(idx));
+            stadiumFeatures.appendChild(btn);
+        });
+        selectStadiumTech(0);
+
+        // --- 9. INTERACTIVE QUIZ LOGIC ---
+        let currentQuizIdx = 0;
+        let quizScore = 0;
+        let answeredCurrent = false;
+
+        const quizContainer = document.getElementById('quizContainer');
+        const quizProgressBadge = document.getElementById('quizProgressBadge');
+
+        function renderQuizQuestion() {
+            answeredCurrent = false;
+            if (currentQuizIdx >= quizQuestions.length) {
+                quizProgressBadge.textContent = 'Yakunlandi';
+                let rankTitle = 'Yosh Madridista';
+                if (quizScore >= 6) rankTitle = 'Afsonaviy Bernabéu Eksperti 👑';
+                else if (quizScore >= 4) rankTitle = 'Haqiqiy Madridista ⚽';
+
+                quizContainer.innerHTML = `
+                    <div class="text-center py-6 space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-rmGold text-rmNavy text-3xl flex items-center justify-center mx-auto shadow-lg">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h4 class="font-royal text-2xl font-extrabold text-rmNavy dark:text-white">Natijangiz: ${quizScore} / ${quizQuestions.length}</h4>
+                        <div class="inline-block px-4 py-1.5 rounded-full bg-rmNavy text-rmGold font-bold text-sm">
+                            Unvon: ${rankTitle}
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto">
+                            Ajoyib o'yin! Bilimingizni yana sinab ko'rish uchun viktorinani qaytadan boshlashingiz mumkin.
+                        </p>
+                        <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-rmGold text-rmNavy font-extrabold text-sm hover:bg-amber-300 transition-colors">
+                            Qaytadan o'ynash
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = quizQuestions[currentQuizIdx];
+            quizProgressBadge.textContent = `${currentQuizIdx + 1} / ${quizQuestions.length}`;
+
+            quizContainer.innerHTML = `
+                <div class="space-y-5">
+                    <h4 class="font-bold text-lg text-rmNavy dark:text-white leading-snug">${q.question}</h4>
+                    <div class="grid sm:grid-cols-2 gap-3" id="quizOptionsBox">
+                        ${q.options.map((opt, idx) => `
+                            <button onclick="handleQuizAnswer(${idx})" class="quiz-opt-btn p-4 rounded-2xl border border-slate-200 dark:border-white/15 bg-white dark:bg-white/5 text-left font-semibold text-sm hover:border-rmGold transition-all">
+                                <span class="inline-block w-6 h-6 rounded-full bg-slate-100 dark:bg-white/10 text-center leading-6 text-xs font-bold mr-2">${['A', 'B', 'C', 'D'][idx]}</span>
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="quizFeedback" class="hidden p-4 rounded-2xl text-sm font-medium"></div>
+                    <div class="flex justify-end">
+                        <button id="nextQuestionBtn" onclick="nextQuizQuestion()" class="hidden px-6 py-2.5 rounded-xl bg-rmNavy text-white dark:bg-rmGold dark:text-rmNavy font-bold text-sm">
+                            Keyingi savol <i class="fa-solid fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.handleQuizAnswer = function(selectedIdx) {
+            if (answeredCurrent) return;
+            answeredCurrent = true;
+
+            const q = quizQuestions[currentQuizIdx];
+            const buttons = document.querySelectorAll('.quiz-opt-btn');
+            const feedback = document.getElementById('quizFeedback');
+            const nextBtn = document.getElementById('nextQuestionBtn');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = tru;
+                if (idx === q.correct) {
+                    btn.classList.add('!bg-emerald-500/20', '!border-emerald-500', 'text-emerald-700', 'dark:text-emerald-300');
+                } else if (idx === selectedIdx && selectedIdx !== q.correct) {
+                    btn.classList.add('!bg-rose-500/20', '!border-rose-500', 'text-rose-700', 'dark:text-rose-300');
+                }
+            });
+
+            if (selectedIdx === q.correct) {
+                quizScore++;
+                feedback.className = 'p-4 rounded-2xl text-sm font-medium bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30';
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> <strong>To‘g‘ri!</strong> ${q.explanation}`;
+            } else {
+                feedback.className = 'p-4 rounded-2xl text-sm font-medium bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30';
+                feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-2"></i> <strong>Noto‘g‘ri.</strong> ${q.explanation}`;
+            }
+
+            feedback.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+        };
+
+        window.nextQuizQuestion = function() {
+            currentQuizIdx++;
+            renderQuizQuestion();
+        };
+
+        window.restartQuiz = function() {
+            currentQuizIdx = 0;
+            quizScore = 0;
+            renderQuizQuestion();
+        };
+
+        renderQuizQuestion();
+
+        // --- 10. LIVE FAVORITE PLAYER POLL ---
+        const pollOptionsContainer = document.getElementById('pollOptions');
+        const totalVotesCountEl = document.getElementById('totalVotesCount');
+        const pollStatusMsg = document.getElementById('pollStatusMsg');
+        let userVotedId = localStorage.getItem('rm-user-voted') || null;
+
+        function renderPoll() {
+            const totalVotes = pollCandidates.reduce((sum, c) => sum + c.votes, 0);
+            totalVotesCountEl.textContent = totalVotes.toLocaleString();
+
+            pollOptionsContainer.innerHTML = pollCandidates.map(candidate => {
+                const percent = totalVotes > 0 ? Math.round((candidate.votes / totalVotes) * 100) : 0;
+                const isSelected = userVotedId === candidate.id;
+
+                return `
+                    <button onclick="voteForPlayer('${candidate.id}')" class="w-full text-left p-4 rounded-2xl border ${isSelected ? 'border-rmGold bg-rmGold/10' : 'border-slate-200 dark:border-white/10 bg-white dark:bg-white/5'} hover:border-rmGold transition-all relative overflow-hidden">
+                        <div class="flex items-center justify-between text-sm font-bold mb-2 relative z-10">
+                            <span class="text-rmNavy dark:text-white flex items-center gap-2">
+                                ${candidate.name}
+                                ${isSelected ? '<i class="fa-solid fa-circle-check text-rmGoldDark dark:text-rmGold"></i>' : ''}
+                            </span>
+                            <span class="text-rmGoldDark dark:text-rmGold">${percent}%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden relative z-10">
+                            <div class="h-full bg-gradient-to-r from-rmNavy to-rmGold dark:from-rmGold dark:to-amber-300 rounded-full transition-all duration-700" style="width: ${percent}%"></div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+
+            if (userVotedId) {
+                pollStatusMsg.innerHTML = '<span class="text-emerald-600 dark:text-emerald-400 font-semibold">Ovozingiz qabul qilindi! Hala Madrid!</span>';
+            }
+        }
+
+        window.voteForPlayer = function(id) {
+            if (userVotedId === id) return;
+            if (userVotedId) {
+                const prev = pollCandidates.find(c => c.id === userVotedId);
+                if (prev) prev.votes--;
+            }
+            const target = pollCandidates.find(c => c.id === id);
+            if (target) target.votes++;
+            userVotedId = id;
+            localStorage.setItem('rm-user-voted', id);
+            renderPoll();
+        };
+
+        renderPoll();
+
+        // Start animations on load
+        window.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+        });
+    </script>
+</body>
+</html>
